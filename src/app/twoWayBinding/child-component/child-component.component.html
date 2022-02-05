@@ -1,0 +1,21 @@
+<hr>
+<h2>Two-way-binding example</h2>
+
+<div class = "wrapper p-20">
+<h4>I am a child</h4>
+<!-- <p>This is an event and props binding combined:</p> -->
+<div>
+    <span class="label">Changing the value will cause parent to update:</span>
+    <span contenteditable="true" class="editable" (blur)="changeValue1($event)" [innerText]="value1"></span>
+    <!-- <span contenteditable="true" class="editable" (blur)="changeFirstBox($event)">{{firstBox}}</span> -->
+</div>
+
+<!-- <p>This is the 2-way binding:</p>
+<div>
+    <span class="label">Changing the value will cause parent to update:</span>
+    <span contenteditable="true" class="editable" (blur)="changeSecondBox($event)">{{secondBox}}</span>
+</div> -->
+
+
+</div>
+<hr>

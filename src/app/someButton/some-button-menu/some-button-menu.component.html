@@ -1,0 +1,7 @@
+<div class="button-wrapper">
+    <some-button *ngFor="let buttonName of buttons"
+        [name] = "buttonName"
+        (click) = "handleButtonClicked($event, buttonName)"
+    >
+    </some-button>
+</div>

@@ -1,0 +1,21 @@
+<div class="slider-wrapper" 
+    (mouseleave) = "disactiveteSlider()" (mouseup) = "disactiveteSlider()"
+>
+    <div class="slider-track" 
+    (mouseleave) = "pauseSlider($event)" 
+    (mouseenter) = "unpauseSlider($event)" 
+    (mousemove)="slide($event)"
+    (mousedown)="setSliderOnTrackClick($event)"
+    #track
+    >
+        <div class="slider"  
+            [style.left.px] = "currentSliderPosition"
+            (mousedown)="activateSlider()"
+            (mousedown)="updateCurrentTrackPosition($event)"
+            #slider
+        >
+        </div>
+    </div>
+    
+    <div class="slider-label center">{{label | percent: 0}}</div>
+</div>

@@ -1,0 +1,40 @@
+.slider-wrapper{
+ height: 50px;
+ border: solid black thin;
+ display: flex;
+ align-items: center;
+ padding-left: 30px;
+ width: 400px;
+}
+.slider-track{
+    position: relative;
+    width: 300px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: yellowgreen;
+}
+.slider{
+    position: absolute;
+    width: 15px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    left: 0;
+    top: -5px;
+    &:hover{
+        cursor: pointer;
+    }
+    &:active{
+        background-color: orange;
+    }
+}
+
+.slider-label{
+    
+    width: 50px;
+    height: 20px;
+    background-color: #888;
+    color: white;
+    border-radius: 10px;
+    margin: 20px;
+}

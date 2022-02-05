@@ -1,0 +1,14 @@
+<h1>One way binding example</h1>
+<div>
+    <some-button-menu 
+        [buttons]="myButtonList" 
+        (buttonClicked)="handleButtonWasClicked($event)"
+    >
+    </some-button-menu>
+    <p>Last clicked button is {{lastButton}}</p>
+
+    <hr>
+    <p *ngFor="let item of getKeys(statistics)">
+        Button {{item}} was clicked {{statistics[item]}} times
+    </p>
+</div>
