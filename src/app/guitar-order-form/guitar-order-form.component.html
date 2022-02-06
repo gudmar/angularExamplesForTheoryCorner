@@ -1,0 +1,60 @@
+
+<h1>Guitar ordering form:</h1>
+<div class="form-wrapper">
+<form (ngSubmit)="submitFrom()" #orderForm="ngForm">
+    <div class="form-group">
+        <label for="select-make">Select guitar brand</label>
+        <!-- select is the right place to bind currently selected option. Should not 
+        be done in the option tag! -->
+        <select class="form-control" 
+                id = "select-make"
+                [(ngModel)]="selectedMake" name="make"
+                required
+                
+                
+         >
+            <option *ngFor = "let product of products; let i = index" 
+                    [ngValue]="product['make']" 
+                    [innerHTML]="product.make"
+            >
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="select-model">Select model</label>
+        <select class="form-control" 
+                id = "select-model"
+                [(ngModel)]="selectedModel" name="model"
+                required
+                
+        >
+            <option *ngFor = "let model of availableModels" [value]="model">{{model}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="select-model">Select model</label>
+        <input type = "text" class = "form-control" id="name"
+            required
+            [(ngModel)] = "ordererName" name="name"
+        >
+    </div>
+
+    <button type="submit" 
+        class="btn btn-success"
+        [disabled] = "!orderForm.form.valid"
+    >Submit the form</button>
+    <div class="btn btn-danger ml-4" (click)="clearForm()">Clear form</div>
+</form>
+<div class="form-info">
+    <div class="form-info-content">
+        <b>Form submitted with data:</b>
+        <ul>
+            <li *ngFor="let field of formContent"><i>{{field.name}}</i>: {{field.content}}</li>
+        </ul>
+    </div>
+    
+</div>
+
+</div>
