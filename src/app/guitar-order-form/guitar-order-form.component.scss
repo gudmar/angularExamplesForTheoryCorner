@@ -1,0 +1,20 @@
+form{
+.ng-dirty{
+    box-shadow: inset 0px 0px 5px -1px #000000;
+}
+.ng-pristine{
+    //oposite to dirty
+    background-color: #cfc;
+}
+.ng-touched{
+    border-color: #000;
+}
+.ng-untouched{
+    background-color: #cfc;
+}
+.ng-invalid:after{
+    content: 'This field is required';
+    background-color: red;
+    color:white;
+}
+}

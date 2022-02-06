@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import { MoveSliderDirective } from './twoWayBinding/move-slider.directive';
 import { PercentPipe } from './percent.pipe';
 import { ParentComponentComponent } from './twoWayBinding/parent-component/parent-component.component';
 import { ChildComponentComponent } from './twoWayBinding/child-component/child-component.component';
+import { GuitarOrderFormComponent } from './guitar-order-form/guitar-order-form.component';
+import { SpaceComponent } from './space/space.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +31,14 @@ import { ChildComponentComponent } from './twoWayBinding/child-component/child-c
     MoveSliderDirective,
     PercentPipe,
     ParentComponentComponent,
-    ChildComponentComponent
+    ChildComponentComponent,
+    GuitarOrderFormComponent,
+    SpaceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
