@@ -33,7 +33,12 @@ export class ParentComponent implements OnInit {
   ngAfterContentChecked(): void{
     this.logger.log(`Parent: AfterContentChecked`, 'parent', 'magenta', 'ngAfterContentChecked')
   }
-
+  ngAfterViewInit(): void{
+    this.logger.log(`Parent: AfterViewInit`, 'parent', '#888', 'ngAfterViewInit')
+  }
+  ngAfterViewChecked(): void{
+    this.logger.log(`Parent: AfterViewChecked`, 'parent', 'black', 'ngAfterViewChecked')
+  }
 
 
   appendChild(){

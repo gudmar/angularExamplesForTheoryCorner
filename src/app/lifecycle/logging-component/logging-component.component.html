@@ -1,33 +1,65 @@
 <div class="container">
-        <hr>
-        <h2>Lifecycle methods testing</h2>
-        <p>Each child has applied lifecycle methods:</p>
-        <ul>
-            <li>ngOnChanges</li><li>ngOnInit</li><li>ngDoCheck</li><li>ngDestroy</li>
-        </ul>
-        <p>A parent has applied</p>
-        <ul>
-            <li>ngAfterContentInit</li><li>ngAfterChontentChecked</li><li>ngAfterViewInit</li><li>ngAfterViewChecked</li>
-        </ul>        
-        <p>Above methods will log content to the logging pane</p>
         <form>
-            <div class="form-group" *ngFor="let method of methods">
-                
-                <input class="m-2" type="checkbox" [id]="method.name" [(ngModel)]="method.value" [name]="method.name" />
-                <label for="method.name">{{method.name}}</label>
-            </div>
+            <p>Collecting logs to the document, causes measurement errors. Just by checking a checkbox
+                below you caues for example call of <code>ngDoCheck</code> for every component. Every one.
+                It does not matter, that components that are measured are not related to this checkbox at all.
+                A sibling, child of the neighbour... No matter. Every component calls its <code>ngDoCheck</code>
+                in case something is missed. That is why the most accurate way of measuring this is by 
+                logging to the console. You may chose not to put data to the document, and to dump it to the 
+                console. Clearing logging pane clears console logs.
+            </p>
+                <div class="form-group inline">
+                    
+                        <input class="m-2" type="checkbox" id="documentLogging" [(ngModel)]="documentLogging" name="documentLogging" />
+                        <label for="documentLogging">{{getLoggingToDocumentLabel()}}</label>
+                    <div class='btn btn-info' (click)="dumpConsoleLogReport()">Dump to console</div>
+                </div>
         </form>
+
+        <form>
+                <div class="form-group inline" *ngFor="let method of methods">
+                    
+                    <input class="m-2" type="checkbox" [id]="method.name" [(ngModel)]="method.value" [name]="method.name" />
+                    <label for="method.name">{{method.name}}</label>
+                </div>
+            </form>
+
         <div class="btn btn-danger" (click)="clearLoggingPane()">Clear logging pane</div>
-        <lifecycle-parent></lifecycle-parent>
+        <p><b>Note: </b>Even clearing logging pane causes lifecycle methods to be called, as something needs to be 
+        removed, so <code>ngDoChecd</code> will be called, and with them the whole batch of methods like 
+    <code>ngAfterContentChecked</code>, <code>ngAfterViewChecekd</code></p>
+        
 
 
         <div class="display- span9">
                 <b>Logging pane:</b>
-                <div class="alert alert-dark">
+                <div class="alert alert-dark logging-pane">
                     <div *ngFor="let message of messages" 
                         [class]="getClasses(message.source)"
                         [style.border]="'solid thick '+ message.color"
-                    >{{message.message}}</div>
+                        [innerText] = "message.message"
+                    ></div>
                 </div>
             </div>
+        
+        <div class="graph logging-pane">
+            <div class="data-entry" *ngFor="let method of methods">
+                <div class="data-item" 
+                    [style]="getStyleOf(method.name)"
+                >
+                <div class="label">{{method.count}}</div>
+                <div class="label">{{method.name}}</div>
+            </div>
+            </div>
+        </div>
+
+        <p><b>NOTE: </b>There are errors <code>ExpressionChangedAfterItHasBeenCheckedError</code>
+        meaning, that the state that would cause page to rerender was changed after the <code>ngAfterViewChecked</code>
+        method was called. And this happened, as for this example to work this last method: <code>ngAfterViewChecked</code>
+        wants DOM to be changed. Normally, there is a work around: triggering the change in the asyn function like 
+        a <code>setTimeout</code>. However here after this async function call, there would be the next 
+        <code>ngAfterContentChecked</code> causing DOM change, and this would trigger next async call ... and 
+        the <b>infinite loop</b> that would not be detected by the browser. 
+    </p>
+    <p>Normally it is recommended to avoid putting methods changing view after content was checked.</p>
 </div>
