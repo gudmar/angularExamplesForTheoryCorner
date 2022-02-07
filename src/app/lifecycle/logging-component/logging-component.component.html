@@ -1,0 +1,33 @@
+<div class="container">
+        <hr>
+        <h2>Lifecycle methods testing</h2>
+        <p>Each child has applied lifecycle methods:</p>
+        <ul>
+            <li>ngOnChanges</li><li>ngOnInit</li><li>ngDoCheck</li><li>ngDestroy</li>
+        </ul>
+        <p>A parent has applied</p>
+        <ul>
+            <li>ngAfterContentInit</li><li>ngAfterChontentChecked</li><li>ngAfterViewInit</li><li>ngAfterViewChecked</li>
+        </ul>        
+        <p>Above methods will log content to the logging pane</p>
+        <form>
+            <div class="form-group" *ngFor="let method of methods">
+                
+                <input class="m-2" type="checkbox" [id]="method.name" [(ngModel)]="method.value" [name]="method.name" />
+                <label for="method.name">{{method.name}}</label>
+            </div>
+        </form>
+        <div class="btn btn-danger" (click)="clearLoggingPane()">Clear logging pane</div>
+        <lifecycle-parent></lifecycle-parent>
+
+
+        <div class="display- span9">
+                <b>Logging pane:</b>
+                <div class="alert alert-dark">
+                    <div *ngFor="let message of messages" 
+                        [class]="getClasses(message.source)"
+                        [style.border]="'solid thick '+ message.color"
+                    >{{message.message}}</div>
+                </div>
+            </div>
+</div>

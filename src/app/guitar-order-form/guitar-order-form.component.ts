@@ -8,6 +8,10 @@ import { GuitarDataService } from './guitar-data.service';
 })
 export class GuitarOrderFormComponent implements OnInit {
   private _products: any[] = [];
+  private _selectedModel: any;
+  private _selectedMake: any;
+  ordererName: any;
+  ordererMail: string = '';
 
   @ViewChild('orderForm') form:any;
 
@@ -22,9 +26,7 @@ export class GuitarOrderFormComponent implements OnInit {
     if (isSelectedMakeEmpty()) this.selectedMake = this.getDefaultMake();
   }
 
-  private _selectedModel: any;
-  private _selectedMake: any;
-  ordererName: any;
+
 
   get selectedModel() { 
     function isIndexValid(id:number){
@@ -112,5 +114,6 @@ export class GuitarOrderFormComponent implements OnInit {
     setTimeout(()=>{this.products = this.dataProvider.getData();});
     // async usage to force view update
   }
+
 
 }

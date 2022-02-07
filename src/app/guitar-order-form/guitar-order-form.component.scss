@@ -2,10 +2,7 @@ form{
 .ng-dirty{
     box-shadow: inset 0px 0px 5px -1px #000000;
 }
-.ng-pristine{
-    //oposite to dirty
-    background-color: #cfc;
-}
+
 .ng-touched{
     border-color: #000;
 }
@@ -16,5 +13,13 @@ form{
     content: 'This field is required';
     background-color: red;
     color:white;
+    bottom:0;
+}
+.ng-invalid{
+    background-color: #fcc;
+}
+.ng-pristine{
+    //oposite to dirty
+    background-color: #cfc;
 }
 }

@@ -18,6 +18,9 @@ import { ParentComponentComponent } from './twoWayBinding/parent-component/paren
 import { ChildComponentComponent } from './twoWayBinding/child-component/child-component.component';
 import { GuitarOrderFormComponent } from './guitar-order-form/guitar-order-form.component';
 import { SpaceComponent } from './space/space.component';
+import { ParentComponent } from './lifecycle/parent/parent.component';
+import { ChildComponent } from './lifecycle/child/child.component';
+import { LoggingComponentComponent } from './lifecycle/logging-component/logging-component.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { SpaceComponent } from './space/space.component';
     ParentComponentComponent,
     ChildComponentComponent,
     GuitarOrderFormComponent,
-    SpaceComponent
+    SpaceComponent,
+    ParentComponent,
+    ChildComponent,
+    LoggingComponentComponent
   ],
   imports: [
     BrowserModule,
