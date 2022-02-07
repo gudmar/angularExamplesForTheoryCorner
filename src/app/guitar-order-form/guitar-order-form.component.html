@@ -38,8 +38,25 @@
         <input type = "text" class = "form-control" id="name"
             required
             [(ngModel)] = "ordererName" name="name"
+            #ordName="ngModel"
         >
+        <div [hidden]="ordName.valid || ordName.pristine" class="alert alert-danger">
+            Please provide your name.
+        </div>
     </div>
+    <div class="form-group">
+        <label for="select-model">Select model</label>
+        <input type = "email" class = "form-control" id="mail"
+            required
+            [(ngModel)] = "ordererMail" name="mail"
+            ngModel email
+            #mail = "ngModel"
+        >
+        <div [hidden]="mail.valid || mail.pristine" class="alert alert-danger">
+            Please provide valid email.
+        </div>
+    </div>
+    {{ordererMail}}
 
     <button type="submit" 
         class="btn btn-success"
@@ -54,7 +71,7 @@
             <li *ngFor="let field of formContent"><i>{{field.name}}</i>: {{field.content}}</li>
         </ul>
     </div>
-    
 </div>
+
 
 </div>
