@@ -1,0 +1,24 @@
+.children-container{
+    height: 9rem;
+    margin-top:20px;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    border: black thin solid;
+}
+.border{
+    border: solid black thin;
+    border-radius: 5px;
+    margin: 5px;
+    height: 3.75rem;
+}
+
+.button-round{
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    position: relative;
+    line-height: 1.4rem;
+}
+
+.green{background-color: green; color: white;}

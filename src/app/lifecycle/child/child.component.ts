@@ -21,13 +21,19 @@ export class ChildComponent implements OnInit {
     this.logger.log(`Child ${this.myNumber}: ngOnChanges`, 'child', 'yellow', 'ngOnChanges')
   }
   ngDoCheck(): void{
-    this.logger.log(`Child ${this.myNumber}: ngDoCheck`, 'child', 'orange', 'ngOnCheck')
+    this.logger.log(`Child ${this.myNumber}: ngDoCheck`, 'child', 'orange', 'ngDoCheck')
   }
   ngAfterContentInit(): void{
     this.logger.log(`Child ${this.myNumber}: AfterContentInit`, 'child', 'cyan', 'ngAfterContentInit')
   }
   ngAfterContentChecked(): void{
     this.logger.log(`Child ${this.myNumber}: AfterContentChecked`, 'child', 'magenta', 'ngAfterContentChecked')
+  }
+  ngAfterViewInit(): void{
+    this.logger.log(`Child ${this.myNumber}: AfterViewInit`, 'child', '#888', 'ngAfterViewInit')
+  }
+  ngAfterViewChecked(): void{
+    this.logger.log(`Child ${this.myNumber}: AfterViewChecked`, 'child', 'black', 'ngAfterViewChecked')
   }
 
 

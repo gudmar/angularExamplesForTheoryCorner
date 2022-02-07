@@ -1,0 +1,27 @@
+.logging-pane{
+    position: relative;
+    height: 15rem;
+    background: #9a9;
+    overflow: auto;
+}
+
+.data-item{
+    position: relative;
+    // height: 1rem;
+    margin-top:10px;
+    color: black;
+}
+.graph{
+    color: black;
+}
+.data-entry{
+    position: relative;
+    height: 2rem;;
+}
+.label{
+    color:black!important;
+}
+
+.inline{
+    display: inline; margin-right: 10px;
+}
