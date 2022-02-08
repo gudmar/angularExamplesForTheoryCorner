@@ -21,6 +21,8 @@ import { SpaceComponent } from './space/space.component';
 import { ParentComponent } from './lifecycle/parent/parent.component';
 import { ChildComponent } from './lifecycle/child/child.component';
 import { LoggingComponentComponent } from './lifecycle/logging-component/logging-component.component';
+import { DoCheckTestComponent } from './doCheck/do-check-test/do-check-test.component';
+import { DoCheckTestChildComponent } from './doCheck/do-check-test-child/do-check-test-child.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { LoggingComponentComponent } from './lifecycle/logging-component/logging
     SpaceComponent,
     ParentComponent,
     ChildComponent,
-    LoggingComponentComponent
+    LoggingComponentComponent,
+    DoCheckTestComponent,
+    DoCheckTestChildComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+<hr>
+<div class="cotainer">
+    <div class="m-2 btn btn-success" (click)="addItem()">Add</div>
+    <div class="m-2 btn btn-danger" (click)="popItem()">Pop</div>
+    <div class="m-2 btn btn-info" (click)="logItems()">Log</div>
+</div>
+<div>
+    <form>
+        <div *ngFor="let item of items; index as i; trackBy: trackByIndex;">
+            <input type="text" [(ngModel)]="items[i]" name=a{{i}} id=a{{i}}/>
+        </div>
+    </form>
+</div>
+
+<do-check-test-child [items]="items" ></do-check-test-child>
+
+<!-- (blur)="updateText($event,i)" -->
