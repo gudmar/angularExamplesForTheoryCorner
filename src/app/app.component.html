@@ -1,13 +1,41 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="javascript:void(0)">Examples: Marek Gudalewicz</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="'/about'">About</a>
+            </li>
+            <li class="nab-item">
+                <a class="nav-link" [routerLink]="'/two-way-binding'">Two way binding</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="'/form'">A form</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="'/lifecycle'">Lifecycle</a>
+            </li>
+
+        </ul>
+        </div>
+    </div>
+</nav>
+
 <div class="container">
-    <menu-parent></menu-parent>
-    <slider></slider>
-    <binding-parent-component></binding-parent-component>
-    <guitar-order-form></guitar-order-form>
+    <!-- <menu-parent></menu-parent>
+        <slider></slider>
+        <binding-parent-component></binding-parent-component>
+        <guitar-order-form></guitar-order-form>
 
-    <lifecycle-parent></lifecycle-parent>
-    <logging-component></logging-component>
-    
-    <do-check-test></do-check-test>
+        <lifecycle-parent></lifecycle-parent>
+        <logging-component></logging-component>
+        
+        <do-check-test></do-check-test> -->
 
+
+    <router-outlet></router-outlet>
     <space></space>
 </div>
