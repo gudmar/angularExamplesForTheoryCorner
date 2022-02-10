@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { TestDirectiveDirective } from './test-directive.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -23,6 +23,8 @@ import { ChildComponent } from './lifecycle/child/child.component';
 import { LoggingComponentComponent } from './lifecycle/logging-component/logging-component.component';
 import { DoCheckTestComponent } from './doCheck/do-check-test/do-check-test.component';
 import { DoCheckTestChildComponent } from './doCheck/do-check-test-child/do-check-test-child.component';
+import { AboutComponent } from './about/about.component';
+import { WrappLogWithParentLifecycleComponent } from './lifecycle/wrapp-log-with-parent-lifecycle/wrapp-log-with-parent-lifecycle.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { DoCheckTestChildComponent } from './doCheck/do-check-test-child/do-chec
     ChildComponent,
     LoggingComponentComponent,
     DoCheckTestComponent,
-    DoCheckTestChildComponent
+    DoCheckTestChildComponent,
+    AboutComponent,
+    WrappLogWithParentLifecycleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,19 @@
+<hr>
+<h2>Lifecycle methods testing</h2>
+<p>Both: child and parent components do have all lifecycle methods implemented to log their call to the 
+    pane or the console. The lifecycle methods in Angular are:
+</p>
+<ul>
+    <li>ngOnChanges</li><li>ngOnInit</li><li>ngDoCheck</li><li>ngDestroy</li><li>ngAfterContentInit</li><li>ngAfterChontentChecked</li><li>ngAfterViewInit</li><li>ngAfterViewChecked</li>
+</ul>
+<p>Please note, that clicking any not related to parent or child element on the site will trigger some of this components
+    lifecycle methods: <code>ngDoCheck</code>, <code>ngAfterChontentChecked</code>, <code>ngAfterViewChecked</code>.
+    You may notice how great number of times some methods are called.
+</p>
+<div class="alert alert-danger">There is a <code>ExpressionChangedAfterItHasBeenCheckedError</code> in the console. This is expected, as to 
+    show this example there were all the lifecycle methods used to modify the page content. This is normally 
+    not allowed.
+</div>
+
+<lifecycle-parent></lifecycle-parent>
+<logging-component></logging-component>
