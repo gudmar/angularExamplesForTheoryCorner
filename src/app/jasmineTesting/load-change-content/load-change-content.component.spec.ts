@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ParentComponentComponent } from './parent-component.component';
+import { LoadChangeContentComponent } from './load-change-content.component';
 
-describe('ParentComponentComponent', () => {
-  let component: ParentComponentComponent;
-  let fixture: ComponentFixture<ParentComponentComponent>;
+describe('LoadChangeContentComponent', () => {
+  let component: LoadChangeContentComponent;
+  let fixture: ComponentFixture<LoadChangeContentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ParentComponentComponent ]
+      declarations: [ LoadChangeContentComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ParentComponentComponent);
+    fixture = TestBed.createComponent(LoadChangeContentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

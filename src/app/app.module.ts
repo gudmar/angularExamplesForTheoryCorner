@@ -25,6 +25,9 @@ import { DoCheckTestComponent } from './doCheck/do-check-test/do-check-test.comp
 import { DoCheckTestChildComponent } from './doCheck/do-check-test-child/do-check-test-child.component';
 import { AboutComponent } from './about/about.component';
 import { WrappLogWithParentLifecycleComponent } from './lifecycle/wrapp-log-with-parent-lifecycle/wrapp-log-with-parent-lifecycle.component';
+import { JasmineTestComponent } from './jasmineTesting/jasmine-test/jasmine-test.component';
+import { LoadChangeContentComponent } from './jasmineTesting/load-change-content/load-change-content.component';
+import { JasmineTestWrapperComponent } from './jasmineTesting/jasmine-test-wrapper/jasmine-test-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { WrappLogWithParentLifecycleComponent } from './lifecycle/wrapp-log-with
     DoCheckTestComponent,
     DoCheckTestChildComponent,
     AboutComponent,
-    WrappLogWithParentLifecycleComponent
+    WrappLogWithParentLifecycleComponent,
+    JasmineTestComponent,
+    LoadChangeContentComponent,
+    JasmineTestWrapperComponent
   ],
   imports: [
     BrowserModule,
