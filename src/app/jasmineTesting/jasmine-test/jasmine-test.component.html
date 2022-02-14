@@ -7,18 +7,18 @@
             <h4>Select color ingredience:</h4>
             <div class="form-group">
                 
-                <input type='checkbox' id="'red'" name="red" [(ngModel)]="isRedOn" />
+                <input type='checkbox' id="red" name="red" [(ngModel)]="isRedOn" />
                 <label for="'red'" class="m-1">Red</label>
             </div>
             <div class="form-group">
                 
-                <input type='checkbox' id="'green'" name="green" [(ngModel)]="isGreenOn" />
+                <input type='checkbox' id="green" name="green" [(ngModel)]="isGreenOn" />
                 <label for="'green'" class="m-1">Green</label>
             </div>
 
             <div class="form-group">
                 
-                <input type='checkbox' id="'blue'" name="blue" [(ngModel)]="isBlueOn" />
+                <input type='checkbox' id="blue" name="blue" [(ngModel)]="isBlueOn" />
                 <label for="'blue'" class="m-1">Blue</label>
             </div>
 
@@ -28,5 +28,7 @@
 
         </div>
 
+        <input  #testCheck type="checkbox" (click)="toggleChecked($event)" checked/>
+{{checked}}{{clicked}}
     </form>
 </div>

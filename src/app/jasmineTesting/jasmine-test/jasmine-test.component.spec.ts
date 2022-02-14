@@ -38,11 +38,9 @@ describe('JasmineTestComponent', () => {
     this.checkRed = fixture.nativeElement.querySelector('#red');
     this.checkBlue = fixture.nativeElement.querySelector('#blue');
     this.colorOutlet = fixture.nativeElement.querySelector('.colorOutlet');
-    console.dir(fixture.nativeElement)
   });
 
   function getElementStyleColor(el:any){
-    console.dir(el)
     return el.style.backgroundColor;
     // return el.
   }
@@ -66,7 +64,6 @@ describe('JasmineTestComponent', () => {
     fixture.whenStable().then(()=>{  // OR fakeAsync tick !!!!!
       expect(this.inputColor.value).toBe('#000aaa')
       expect(getElementStyleColor(this.colorOutlet)).toBe('rgb(0, 10, 170)')
-      console.dir(this.colorOutlet)
     })
   });
 
@@ -74,9 +71,10 @@ describe('JasmineTestComponent', () => {
 
     fixture.detectChanges();
     fixture.whenStable().then(()=>{  // OR fakeAsync tick !!!!!
-      expect(this.checkBlue.value).toBeTrue();
-      expect(this.checkGreen.value).toBeTrue();
-      expect(this.checkRed.value).toBeTrue();
+      expect(this.checkBlue.checked).toBeTrue();
+      expect(this.checkGreen.checked).toBeTrue();
+      expect(this.checkRed.checked).toBeTrue();
+      // expect(this.checkRed.value).toBeTrue(); // nie value
       
     })
   });
@@ -86,28 +84,87 @@ describe('JasmineTestComponent', () => {
     fixture.detectChanges();
     fixture.whenStable().then(()=>{  // OR fakeAsync tick !!!!!
       let that = this;
-      this.checkBlue.value = false;
+      this.checkBlue.click();// = false;
+      // this.checkBlue.checked;  i value nie dawalo rady
+      
       this.checkBlue.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
       fixture.whenStable().then(()=>{
-        expect(that.colorOutlet.value).toBe('rgb(0, 10, 0)');
+        expect(getElementStyleColor(this.colorOutlet)).toBe('rgb(0, 10, 0)');
       })
       
     })
   });
 
-  // it('unchecking green should result in rgb(0, 0, 170)', function(this:any) {
+  it('Changing the color input box', function(this:any) {
+    fixture.detectChanges(); // initiate component, align internal state with DOM
+    fixture.whenStable().then(()=>{  // OR fakeAsync tick !!!!!
+      // let that = this; 
+      this.inputColor.value = '#ffffff' // set input initial value to white
+      this.inputColor.dispatchEvent(new Event('input')); 
+         // 'change' event does not make change to be known by formsModule
+      fixture.detectChanges(); // update model and rest of the view
+      fixture.whenStable().then(()=>{
+        expect(getElementStyleColor(this.colorOutlet)).toBe('rgb(255, 255, 255)');
+      })
+      
+    })
+  });
+
+  // it('should change the colorOutlet from rgb(0, 10, 170) to rgb(0, 0, 170) after unchecking green', function(this:any) {
 
   //   fixture.detectChanges();
   //   fixture.whenStable().then(()=>{  // OR fakeAsync tick !!!!!
   //     let that = this;
-  //     this.checkGreen.value = false;
-  //     this.checkGreen.dispatchEvent(new Event('input'));
+  //     expect(that.colorOutlet.style.backgroundColor).toBe('rgb(0, 10, 170)');
+  //     this.checkGreen.click(); // changing the value of the checkbox does not uncheck it
+  //     fixture.detectChanges();
   //     fixture.whenStable().then(()=>{
-  //       expect(that.colorOutlet.value).toBe('rgb(0, 0, 170)');
+  //       expect(that.colorOutlet.style.backgroundColor).toBe('rgb(0, 0, 170)');
   //     })
       
   //   })
   // });
+
+
+  it('should filter colorOutlet after unchecking a checkbox', async function(this:any) {
+    let that = this;
+    let testCases = [
+      {element: this.checkBlue, output:'rgb(255, 255, 0)'},
+      {element: this.checkGreen, output:'rgb(255, 0, 255)'},
+      {element: this.checkRed, output:'rgb(0, 255, 255)'}
+    ]
+    async function teardown(){
+      for(let testCase of testCases){
+        if (!testCase.element.checked){testCase.element.click();}
+      }
+      that.inputColor.value = '#000aaa';
+      that.inputColor.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      await fixture.whenStable().then(()=>{
+        expect(that.colorOutlet.style.backgroundColor).toBe('rgb(0, 10, 170)');
+      })
+    }
+
+    for (let testCase of testCases){
+      fixture.detectChanges();
+      await fixture.whenStable().then(()=>{  // OR fakeAsync tick !!!!!
+        this.inputColor.value = '#ffffff' // set input initial value to white
+        that.inputColor.dispatchEvent(new Event('input'));
+        fixture.detectChanges();
+        fixture.whenStable().then(()=>{  // OR fakeAsync tick !!!!!
+          expect(that.colorOutlet.style.backgroundColor).toBe('rgb(255, 255, 255)');
+          testCase.element.click(); // changing the value of the checkbox does not uncheck it
+          fixture.detectChanges();
+          fixture.whenStable().then(()=>{
+            expect(that.colorOutlet.style.backgroundColor).toBe(testCase.output);
+            teardown();
+          })
+          
+        })
+      })
+    }
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
