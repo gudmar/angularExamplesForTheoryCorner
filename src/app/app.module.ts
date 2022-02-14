@@ -28,6 +28,7 @@ import { WrappLogWithParentLifecycleComponent } from './lifecycle/wrapp-log-with
 import { JasmineTestComponent } from './jasmineTesting/jasmine-test/jasmine-test.component';
 import { LoadChangeContentComponent } from './jasmineTesting/load-change-content/load-change-content.component';
 import { JasmineTestWrapperComponent } from './jasmineTesting/jasmine-test-wrapper/jasmine-test-wrapper.component';
+import { NoDependenciesComponentComponent } from './jasmineTesting/no-dependencies-component/no-dependencies-component.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { JasmineTestWrapperComponent } from './jasmineTesting/jasmine-test-wrapp
     WrappLogWithParentLifecycleComponent,
     JasmineTestComponent,
     LoadChangeContentComponent,
-    JasmineTestWrapperComponent
+    JasmineTestWrapperComponent,
+    NoDependenciesComponentComponent
   ],
   imports: [
     BrowserModule,
