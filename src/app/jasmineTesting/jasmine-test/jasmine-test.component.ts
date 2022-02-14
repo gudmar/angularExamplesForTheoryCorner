@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { ExtractColorsService } from '../extract-colors.service'
 
@@ -57,7 +57,17 @@ export class JasmineTestComponent implements OnInit {
     this.filteredColor = this.colorExtractor.getFiltered(this.colorFlag, this._inputColor)
   }
 
+  @ViewChild('testCheck') testCheck:any;
 
+  checked = false;
+  clicked = ''
+toggleChecked(e:any){
+  this.clicked = "   Clicked";
+  // this.checked = !this.checked;
+  this.checked = this.testCheck.nativeElement.checked;
+  console.dir(this.testCheck)
+  setTimeout(()=>{this.clicked = ''}, 1000)
+}
 
 
 }
