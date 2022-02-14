@@ -26,7 +26,7 @@ class MockRandomDataService {
   }
 }
 
-fdescribe('LoadChangeContentComponent', () => {
+describe('LoadChangeContentComponent', () => {
   let component: LoadChangeContentComponent;
   let fixture: ComponentFixture<LoadChangeContentComponent>;
 
@@ -60,6 +60,13 @@ fdescribe('LoadChangeContentComponent', () => {
     console.log(p)
     expect(p.innerText).toBe('01234');
     expect(h.innerText).toBe('01234');
+ }))
+
+ it('should fill headline with data after ngOnInit', fakeAsync(()=>{
+   expect(component.headline).toBe('');
+   component.ngOnInit();
+   tick(80);
+   expect(component.headline).toBe('01234');
  }))
 
  it('should update value after click', fakeAsync(()=>{
