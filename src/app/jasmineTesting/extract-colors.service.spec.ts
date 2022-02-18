@@ -40,7 +40,6 @@ describe('testing color removal: ', ()=>{
   let counter = 0;
   
   beforeEach(function ( this:any ) {
-    console.log(`I am the ${counter} beforeEach`);
     counter++;
     this.customMessage = `Leaving this message by the PARENT`
   })

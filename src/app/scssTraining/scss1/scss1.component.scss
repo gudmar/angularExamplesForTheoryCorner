@@ -1,0 +1,57 @@
+@use "./colorTheme" with ($bg-color: #44ff44);
+
+$shadowing: 1;
+
+@function shadow(){
+    @debug $shadowing;
+    $shadowing: 2;
+    @debug $shadowing;
+    @return $shadowing;
+}
+
+$item-width: 50px;
+$item-height: 50px;
+$item-radius: 5px;
+
+@mixin rectangle{
+    position: relative;
+    width: $item-width;
+    height: $item-height;
+    border: transparent medium solid;
+    border-radius: $item-radius;
+}
+
+
+.center{
+    display: felx;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    &>div{
+        margin: 5px;
+    }
+}
+
+.green-theme {
+    @include rectangle();
+    @include colorTheme.get-default-color;
+}
+
+.red-element {
+    @include rectangle;
+    @include colorTheme.get-theme(#ff9999)
+}
+
+.brown-element {
+    @include rectangle;
+    @include colorTheme.get-theme(brown);
+    $local: shadow();
+    @debug $local;
+}

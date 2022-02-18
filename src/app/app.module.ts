@@ -29,6 +29,8 @@ import { JasmineTestComponent } from './jasmineTesting/jasmine-test/jasmine-test
 import { LoadChangeContentComponent } from './jasmineTesting/load-change-content/load-change-content.component';
 import { JasmineTestWrapperComponent } from './jasmineTesting/jasmine-test-wrapper/jasmine-test-wrapper.component';
 import { NoDependenciesComponentComponent } from './jasmineTesting/no-dependencies-component/no-dependencies-component.component';
+import { Scss1Component } from './scssTraining/scss1/scss1.component';
+import { ScssWrapperComponent } from './scssTraining/scss-wrapper/scss-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { NoDependenciesComponentComponent } from './jasmineTesting/no-dependenci
     JasmineTestComponent,
     LoadChangeContentComponent,
     JasmineTestWrapperComponent,
-    NoDependenciesComponentComponent
+    NoDependenciesComponentComponent,
+    Scss1Component,
+    ScssWrapperComponent
   ],
   imports: [
     BrowserModule,

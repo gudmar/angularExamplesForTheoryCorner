@@ -6,6 +6,7 @@ import {WrappLogWithParentLifecycleComponent} from './lifecycle/wrapp-log-with-p
 import {AboutComponent} from './about/about.component';
 import {JasmineTestComponent} from './jasmineTesting/jasmine-test/jasmine-test.component'
 import { JasmineTestWrapperComponent } from './jasmineTesting/jasmine-test-wrapper/jasmine-test-wrapper.component';
+import { ScssWrapperComponent } from './scssTraining/scss-wrapper/scss-wrapper.component'
 
 const routes: Routes = [
   {path: 'two-way-binding', component: ParentComponentComponent, data:{myCustom:'some inputs'}},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'lifecycle', component: WrappLogWithParentLifecycleComponent},
   {path: 'about', component: AboutComponent},
   {path: 'jasmine', component: JasmineTestWrapperComponent},
+  {path: 'scss', component: ScssWrapperComponent},
   {path: '**', component: AboutComponent}
 ];
 
