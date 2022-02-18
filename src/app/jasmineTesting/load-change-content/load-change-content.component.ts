@@ -22,7 +22,6 @@ export class LoadChangeContentComponent implements OnInit {
   }
 
   update(){
-    console.log('Button clicked')
     this.setNewContent();
   }
 

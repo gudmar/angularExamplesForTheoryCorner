@@ -24,7 +24,6 @@ export class ExtractColorsService {
   }
 
    getBlue(color: string){
-     console.log(this)
     return this.getIngrediance(color, 'ff')
   }
 

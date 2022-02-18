@@ -15,7 +15,6 @@ class MockRandomDataService {
     }
     return new Promise((resolve)=>{
       setTimeout(()=>{
-        console.log(output)
         resolve(output);
       },5)
     })
@@ -57,7 +56,6 @@ describe('LoadChangeContentComponent', () => {
     component.ngOnInit();
     tick(80);
     fixture.detectChanges();
-    console.log(p)
     expect(p.innerText).toBe('01234');
     expect(h.innerText).toBe('01234');
  }))

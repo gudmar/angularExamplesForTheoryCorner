@@ -1,0 +1,24 @@
+
+$bg-color: red !default;
+@debug 'dupa';
+
+@function getColor($_bg-color){
+    $output: #000;
+    $lightness: lightness($_bg-color);
+    @if $lightness < 50% {
+        $output: #fff;
+    }
+    @return $output;
+}
+
+@mixin get-theme($theme-color){
+    background-color: $theme-color;
+    border-color: darken($color: $theme-color, $amount: 20);
+    color: getColor($theme-color);
+}
+
+@mixin get-default-color{
+    background-color: $bg-color;
+    border-color: darken($color: $bg-color, $amount: 20);
+    color: getColor($bg-color);    
+}

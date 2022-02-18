@@ -16,14 +16,16 @@ class MockExtractColorsService {
 
 
 
-describe('JasmineTestComponent', () => {
+fdescribe('JasmineTestComponent', () => {
   let component: JasmineTestComponent;
   let fixture: ComponentFixture<JasmineTestComponent>;
+  let service: MockExtractColorsService;
   
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ JasmineTestComponent ],
+      providers: [{provide: ExtractColorsService, useClass: MockExtractColorsService}],
       imports: [FormsModule] // !!!! FOR ngModel
     })
     .compileComponents();
@@ -33,11 +35,13 @@ describe('JasmineTestComponent', () => {
     fixture = TestBed.createComponent(JasmineTestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    this.service = TestBed.get(ExtractColorsService)
     this.inputColor = fixture.nativeElement.querySelector('[type="color"]');
     this.checkGreen = fixture.nativeElement.querySelector('#green');
     this.checkRed = fixture.nativeElement.querySelector('#red');
     this.checkBlue = fixture.nativeElement.querySelector('#blue');
     this.colorOutlet = fixture.nativeElement.querySelector('.colorOutlet');
+
   });
 
   function getElementStyleColor(el:any){
@@ -80,23 +84,24 @@ describe('JasmineTestComponent', () => {
   });
   
   it('unchecking blue should result in rgb(0, 10, 0)', function(this:any) {
-
+    this.service.setCurrentColor('#000aaa')
     fixture.detectChanges();
     fixture.whenStable().then(()=>{  // OR fakeAsync tick !!!!!
       let that = this;
       this.checkBlue.click();// = false;
       // this.checkBlue.checked;  i value nie dawalo rady
-      
+      this.service.setCurrentColor('#000a00')
       this.checkBlue.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       fixture.whenStable().then(()=>{
-        expect(getElementStyleColor(this.colorOutlet)).toBe('rgb(0, 10, 0)');
+        // debugger;
+        expect(getElementStyleColor(this.colorOutlet.style.backgroundColor)).toBe('rgb(0, 10, 0)');
       })
       
     })
   });
 
-  it('Changing the color input box', function(this:any) {
+  xit('Changing the color input box', function(this:any) {
     fixture.detectChanges(); // initiate component, align internal state with DOM
     fixture.whenStable().then(()=>{  // OR fakeAsync tick !!!!!
       // let that = this; 
@@ -130,15 +135,16 @@ describe('JasmineTestComponent', () => {
   it('should filter colorOutlet after unchecking a checkbox', async function(this:any) {
     let that = this;
     let testCases = [
-      {element: this.checkBlue, output:'rgb(255, 255, 0)'},
-      {element: this.checkGreen, output:'rgb(255, 0, 255)'},
-      {element: this.checkRed, output:'rgb(0, 255, 255)'}
+      {element: this.checkBlue, output:'rgb(255, 255, 0)', serviceValue: '#ffff00', property: 'isBlueOn'},
+      {element: this.checkGreen, output:'rgb(255, 0, 255)', serviceValue: '#ff00ff', property: 'isGreenOn'},
+      {element: this.checkRed, output:'rgb(0, 255, 255)', serviceValue: '#00ffff', property: 'isRedOn'},
     ]
     async function teardown(){
       for(let testCase of testCases){
         if (!testCase.element.checked){testCase.element.click();}
       }
       that.inputColor.value = '#000aaa';
+      that.service.setCurrentColor('#000aaa')
       that.inputColor.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       await fixture.whenStable().then(()=>{
@@ -150,13 +156,30 @@ describe('JasmineTestComponent', () => {
       fixture.detectChanges();
       await fixture.whenStable().then(()=>{  // OR fakeAsync tick !!!!!
         this.inputColor.value = '#ffffff' // set input initial value to white
+        this.service.setCurrentColor('#ffffff');
         that.inputColor.dispatchEvent(new Event('input'));
         fixture.detectChanges();
         fixture.whenStable().then(()=>{  // OR fakeAsync tick !!!!!
+          // debugger
+          
           expect(that.colorOutlet.style.backgroundColor).toBe('rgb(255, 255, 255)');
+          that.service.setCurrentColor(testCase.serviceValue)
+          console.info('service valiue', testCase.serviceValue)
           testCase.element.click(); // changing the value of the checkbox does not uncheck it
+          // console.log('???????????????????????//')
+
           fixture.detectChanges();
+          let p = testCase.property
+          console.info('==== ', p)
+          console.log(component[p])
+          // console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+
+          // console.info(' COPONENT ' , component['testCase.property'])
           fixture.whenStable().then(()=>{
+            // console.info(' COPONENT ' , component)
+            // let method = component[testCase.property]
+            // expect(testCase[component.property])
+            // debugger
             expect(that.colorOutlet.style.backgroundColor).toBe(testCase.output);
             teardown();
           })

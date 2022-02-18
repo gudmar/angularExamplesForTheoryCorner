@@ -34,7 +34,7 @@
     </div>
 
     <div class="form-group">
-        <label for="select-model">Select model</label>
+        <label for="select-model">Your name</label>
         <input type = "text" class = "form-control" id="name"
             required
             [(ngModel)] = "ordererName" name="name"
@@ -45,7 +45,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="select-model">Select model</label>
+        <label for="select-model">Your e-mail</label>
         <input type = "email" class = "form-control" id="mail"
             required
             [(ngModel)] = "ordererMail" name="mail"
@@ -56,13 +56,12 @@
             Please provide valid email.
         </div>
     </div>
-    {{ordererMail}}
 
     <button type="submit" 
-        class="btn btn-success"
+        class="btn btn-success m-4"
         [disabled] = "!orderForm.form.valid"
     >Submit the form</button>
-    <div class="btn btn-danger ml-4" (click)="clearForm()">Clear form</div>
+    <div class="btn btn-danger m-4" (click)="clearForm()">Clear form</div>
 </form>
 <div class="form-info">
     <div class="form-info-content">
